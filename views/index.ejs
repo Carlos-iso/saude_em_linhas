@@ -1,11 +1,348 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= title %></title>
+		<link rel="stylesheet" href="./stylesheets/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:wght@400;600&family=Special+Elite&family=Courier+Prime&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.383.0/umd/lucide.min.js"></script>
+	</head>
+	<body>
+		<!-- Ambient orbs -->
+		<div class="orbs">
+			<div class="orb orb-amber"></div>
+			<div class="orb orb-blue"></div>
+			<div class="orb orb-lilac"></div>
+		</div>
+
+		<!-- ── NAVBAR ── -->
+		<nav>
+			<div class="nav-brand">
+				<div class="nav-icon">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<rect width="20" height="16" x="2" y="4" rx="2" />
+						<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+					</svg>
+				</div>
+				<div class="nav-title-wrap">
+					<span class="nav-title">Carta Anônima</span>
+					<span class="nav-sub">Saúde Mental no Trabalho</span>
+				</div>
+			</div>
+			<div class="nav-badge">
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<rect width="11" height="11" x="1" y="11" rx="2" />
+					<path d="M17 11a4 4 0 0 0-8 0" />
+					<circle cx="12" cy="17" r="1" />
+				</svg>
+				<span>100% Anônimo &amp; Protegido</span>
+			</div>
+		</nav>
+
+		<!-- ── MAIN ── -->
+		<div class="main">
+			<!-- ── HERO ── -->
+			<div class="hero">
+				<div class="hero-badge">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path
+							d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+						/>
+					</svg>
+					<span>ESPAÇO SEGURO E CONFIDENCIAL</span>
+				</div>
+				<h1>
+					Como você está se sentindo<br />
+					<span class="hero-gradient">hoje no trabalho?</span>
+				</h1>
+				<p class="hero-sub">
+					Escreva livremente sobre o que está pesando. Nossa IA lê com empatia e
+					responde com orientações personalizadas.
+				</p>
+			</div>
+
+			<!-- ── LETTER CARD ── -->
+			<div class="card letter-card">
+				<div class="card-glow-top"></div>
+				<div class="letter-body">
+					<div class="letter-header">
+						<div class="letter-header-left">
+							<div class="letter-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="20" height="16" x="2" y="4" rx="2" />
+									<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+								</svg>
+							</div>
+							<div>
+								<p class="letter-label">Escreva sua carta</p>
+								<p class="letter-sublabel">
+									Seu relato é totalmente anônimo e confidencial
+								</p>
+							</div>
+						</div>
+						<!-- Stamp -->
+						<div class="stamp">
+							<svg width="80" height="80" style="position: absolute; inset: 0">
+								<circle
+									cx="40"
+									cy="40"
+									r="37"
+									fill="none"
+									stroke="#FAC775"
+									stroke-width="1"
+									stroke-dasharray="4 3"
+									stroke-opacity="0.4"
+								/>
+								<circle
+									cx="40"
+									cy="40"
+									r="31"
+									fill="rgba(250,199,117,0.05)"
+									stroke="#FAC775"
+									stroke-width="1"
+									stroke-opacity="0.25"
+								/>
+							</svg>
+							<div class="stamp-inner">
+								<span class="stamp-100">100%</span>
+								<span class="stamp-shield">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path
+											d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+										/>
+									</svg>
+								</span>
+								<span class="stamp-anon">ANÔNIMO</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Textarea -->
+					<div class="textarea-wrap">
+						<div class="textarea-margin"></div>
+						<textarea
+							id="letterInput"
+							rows="8"
+							maxlength="1000"
+							placeholder="Escreva aqui sua carta… Fale sobre o que está pesando, o que sentiu hoje, como está se sentindo."
+							oninput="handleInput(this)"
+						></textarea>
+					</div>
+
+					<!-- Bottom bar -->
+					<div class="letter-bottom">
+						<div class="letter-counter">
+							<span class="counter-text" id="charCount">0/1000 caracteres</span>
+							<div class="counter-dots" id="dots"></div>
+						</div>
+						<button
+							class="btn-send"
+							id="sendBtn"
+							onclick="handleSend()"
+							disabled
+						>
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="m22 2-7 20-4-9-9-4Z" />
+								<path d="M22 2 11 13" />
+							</svg>
+							ENVIAR CARTA
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- ── AI RESPONSE (hidden until result) ── -->
+			<div class="result-grid hidden" id="resultGrid">
+				<!-- Left — AI letter -->
+				<div class="card response-card">
+					<div class="card-glow-amber"></div>
+					<div class="response-card-body">
+						<div class="resp-header">
+							<div class="resp-icon resp-icon-amber">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="20" height="16" x="2" y="4" rx="2" />
+									<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+								</svg>
+							</div>
+							<div>
+								<p class="resp-label">Sua carta foi recebida</p>
+								<p class="resp-sub">Resposta personalizada para você</p>
+							</div>
+						</div>
+						<div class="emotion-chip" id="emotionChip">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path
+									d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 1.5C10.5 3.5 9.26 3 7.5 3a5.5 5.5 0 0 0-5.5 5.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+								/>
+							</svg>
+							<span id="emotionLabel">—</span>
+						</div>
+						<hr class="divider" />
+						<pre class="response-text" id="responseText"></pre>
+						<span class="cursor" id="cursor">▌</span>
+						<div class="resp-actions hidden" id="respActions">
+							<button class="btn-reset" onclick="handleReset()">
+								NOVA CARTA
+							</button>
+							<span style="font-size: 1.3rem">💛</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right — Recommendations -->
+				<div class="card recs-card">
+					<div class="card-glow-blue"></div>
+					<div class="recs-body">
+						<div class="resp-header">
+							<div class="resp-icon resp-icon-blue">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+									/>
+								</svg>
+							</div>
+							<div>
+								<p class="resp-label">Recomendações para você</p>
+								<p class="resp-sub">Selecionadas com base na sua carta</p>
+							</div>
+						</div>
+						<hr class="divider" />
+						<div class="recs-grid" id="recsGrid"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ── PROCESS TIMELINE ── -->
+			<div class="card timeline-card">
+				<div class="card-glow-multi"></div>
+				<div class="timeline-body">
+					<div class="timeline-header">
+						<div class="timeline-title">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path
+									d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+								/>
+								<circle cx="12" cy="12" r="3" />
+							</svg>
+							<span>Como analisamos sua carta</span>
+						</div>
+						<div class="timeline-badge">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path
+									d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+								/>
+							</svg>
+							<span>Dados 100% protegidos</span>
+						</div>
+					</div>
+					<div class="steps-row" id="stepsRow"></div>
+				</div>
+			</div>
+
+			<!-- ── FOOTER ── -->
+			<div class="footer">
+				<div class="footer-pill">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path
+							d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.12 6.12l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 15.5"
+						/>
+					</svg>
+					<span
+						>Em crise? Ligue <strong>188 (CVV)</strong> — gratuito 24
+						horas</span
+					>
+				</div>
+			</div>
+		</div>
+		<script src="./javascripts/main.js"></script>
+	</body>
 </html>
