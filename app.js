@@ -20,9 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ── Rotas ──────────────────────────────────────────────────────────────────
-app.get('/', (_req, res) => {
-  res.render('index', { erro: null, resultado: null });
-});
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
 
 // Único endpoint de escrita — anônimo por design
 app.post('/relato', enviarRelato);
