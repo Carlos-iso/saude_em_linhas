@@ -4,18 +4,19 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
+    "dev": "clear && nodemon ./bin/www",
     "pull": "git pull origin main && npm install",
-		"push": "git status && git add . && git commit -m 'Front implementado' && git push origin main"
+    "push": "git status && git add . && git commit -m 'feat: Ai connected, Ai responses, error: verify links' && git push origin main"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^17.4.2",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "postgres": "^3.4.9",
+    "pg": "^8.22.0",
     "serve-favicon": "^2.5.1"
   },
   "devDependencies": {
