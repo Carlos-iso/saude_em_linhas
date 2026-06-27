@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "dev": "clear && nodemon ./bin/www",
     "pull": "git pull origin main && npm install",
-    "push": "git status && git add . && git commit -m 'feat: Ai connected Ai responses error: verify links title funcionality' && git push origin main"
+    "push": "git status && git add . && git commit -m 'feat: Ai connected Ai responses error: verify links title funcionality remove sql' && git push origin main"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
