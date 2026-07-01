@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "dev": "clear && nodemon ./bin/www",
     "pull": "git pull origin main && npm install",
-    "push": "git status && git add . && git commit -m 'feat: remove controller.db' && git push origin main"
+    "push": "git status && git add . && git commit -m 'feat: update cvv link' && git push origin main"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

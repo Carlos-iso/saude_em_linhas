@@ -810,6 +810,7 @@ textarea::placeholder {
   border: 1px solid rgba(250, 199, 117, 0.2);
   border-radius: 12px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 .footer-pill svg {
   color: var(--amber);
