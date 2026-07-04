@@ -118,7 +118,7 @@ const RECS = {
 			label: "Respiração 4-7-8",
 			desc: "Técnica rápida para acalmar a ansiedade.",
 			btn: "RESPIRAR",
-			url: "https://www.youtube.com/watch?v=JkFB7sFpPkA",
+			url: "https://www.youtube.com/watch?v=2w-FNiySmKk",
 			color: T.blue,
 			dim: T.blueDim,
 		},
@@ -136,7 +136,7 @@ const RECS = {
 			label: "Sons da Natureza",
 			desc: "Playlists relaxantes para acalmar a mente.",
 			btn: "OUVIR",
-			url: "https://open.spotify.com/playlist/37i9dQZF1DX3rxVfibe1L0",
+			url: "https://www.youtube.com/watch?v=UfcAVejslrU&list=OLAK5uy_lBLi4hCNijjVXo0gQrr0WaeTNLrrczgUI",
 			color: T.amber,
 			dim: T.amberDim,
 		},
@@ -156,7 +156,7 @@ const RECS = {
 			label: "Músicas Lo-fi",
 			desc: "Sons relaxantes para concentrar e acalmar.",
 			btn: "OUVIR",
-			url: "https://open.spotify.com/playlist/37i9dQZF1DX3rxVfibe1L0",
+			url: "https://www.youtube.com/watch?v=paL0E4NnnVU&list=RDpaL0E4NnnVU&start_radio=1",
 			color: T.amber,
 			dim: T.amberDim,
 		},
@@ -194,7 +194,7 @@ const RECS = {
 			label: "Playlist Afeto",
 			desc: "Músicas acolhedoras para te acompanhar.",
 			btn: "OUVIR",
-			url: "https://open.spotify.com/playlist/37i9dQZF1DX7qK8ma5wgG1",
+			url: "https://www.youtube.com/watch?v=UfcAVejslrU&list=RDUfcAVejslrU&start_radio=1",
 			color: T.lilac,
 			dim: T.lilacDim,
 		},
@@ -437,54 +437,57 @@ function handleInput(el) {
 }
 
 async function handleSend() {
-  if (!letterValue.trim() || sending) return;
-  sending = true;
- 
-  const btn = document.getElementById('sendBtn');
-  btn.disabled = true;
-  btn.innerHTML = `<span class="spin">${ICONS.sparkles}</span> ANALISANDO…`;
- 
-  try {
-    const resp = await fetch('/relato', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ conteudo: letterValue }),
-    });
- 
-    if (!resp.ok) throw new Error('Erro no servidor');
- 
-    const data = await resp.json();
- 
-    // Exibe o grid de resultado
-    document.getElementById('resultGrid').classList.remove('hidden');
- 
-    // Chip de emoção
-    document.getElementById('emotionLabel').textContent =
-      (data.emocao?.nome_emocao || 'Emoção identificada').toUpperCase();
- 
-    // Recomendações com dados reais da IA
-    renderRecs(data);
- 
-    // Typewriter com a carta da IA
-    typewrite(data.conselho);
- 
-    setTimeout(() => {
-      document.getElementById('resultGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 400);
- 
-  } catch (err) {
-    console.error(err);
-    // Fallback: usa análise local se a API falhar
-    const result = analyze(letterValue);
-    document.getElementById('resultGrid').classList.remove('hidden');
-    document.getElementById('emotionLabel').textContent = result.emotion.toUpperCase();
-    renderRecsLocal(result.emotionKey);
-    typewrite(result.letter);
-  } finally {
-    sending = false;
-    btn.disabled = !letterValue.trim();
-    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> ENVIAR CARTA`;
-  }
+	if (!letterValue.trim() || sending) return;
+	sending = true;
+
+	const btn = document.getElementById("sendBtn");
+	btn.disabled = true;
+	btn.innerHTML = `<span class="spin">${ICONS.sparkles}</span> ANALISANDO…`;
+
+	try {
+		const resp = await fetch("/relato", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ conteudo: letterValue }),
+		});
+
+		if (!resp.ok) throw new Error("Erro no servidor");
+
+		const data = await resp.json();
+
+		// Exibe o grid de resultado
+		document.getElementById("resultGrid").classList.remove("hidden");
+
+		// Chip de emoção
+		document.getElementById("emotionLabel").textContent = (
+			data.emocao?.nome_emocao || "Emoção identificada"
+		).toUpperCase();
+
+		// Recomendações com dados reais da IA
+		renderRecs(data);
+
+		// Typewriter com a carta da IA
+		typewrite(data.conselho);
+
+		setTimeout(() => {
+			document
+				.getElementById("resultGrid")
+				.scrollIntoView({ behavior: "smooth", block: "start" });
+		}, 400);
+	} catch (err) {
+		console.error(err);
+		// Fallback: usa análise local se a API falhar
+		const result = analyze(letterValue);
+		document.getElementById("resultGrid").classList.remove("hidden");
+		document.getElementById("emotionLabel").textContent =
+			result.emotion.toUpperCase();
+		renderRecsLocal(result.emotionKey);
+		typewrite(result.letter);
+	} finally {
+		sending = false;
+		btn.disabled = !letterValue.trim();
+		btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> ENVIAR CARTA`;
+	}
 }
 
 function typewrite(text) {
@@ -509,68 +512,68 @@ function typewrite(text) {
 
 // Renderiza recomendações com dados reais da IA
 function renderRecs(data) {
-  const grid = document.getElementById('recsGrid');
-  grid.innerHTML = '';
- 
-  const items = [];
- 
-  // Músicas
-  (data.musicas || []).slice(0, 2).forEach(m => {
-    items.push({
-      icon:  'headphones',
-      label: m.titulo,
-      desc:  m.artista,
-      btn:   'OUVIR',
-      url:   m.url || 'https://open.spotify.com',
-      color: T.amber,
-      dim:   T.amberDim,
-    });
-  });
- 
-  // Livros
-  (data.livros || []).slice(0, 1).forEach(l => {
-    items.push({
-      icon:  'bookopen',
-      label: l.titulo,
-      desc:  `${l.autor} — ${l.descricao}`,
-      btn:   'VER',
-      url:   `https://www.google.com/search?q=${encodeURIComponent(l.titulo + ' ' + l.autor)}`,
-      color: T.lilac,
-      dim:   T.lilacDim,
-    });
-  });
- 
-  // Links
-  (data.links || []).slice(0, 1).forEach(lk => {
-    items.push({
-      icon:  'heart',
-      label: lk.titulo,
-      desc:  lk.descricao,
-      btn:   'ACESSAR',
-      url:   lk.url,
-      color: T.mint,
-      dim:   T.mintDim,
-    });
-  });
- 
-  // Se urgente, força CVV no topo
-  if (data.nivel_urgencia === 3) {
-    items.unshift({
-      icon:  'phone',
-      label: 'CVV — Ligue 188',
-      desc:  'Apoio gratuito e sigiloso 24 horas.',
-      btn:   'LIGAR',
-      url:   'https://www.cvv.org.br/',
-      color: T.amber,
-      dim:   T.amberDim,
-    });
-  }
- 
-  items.forEach((rec, i) => {
-    const item = document.createElement('div');
-    item.className = 'rec-item';
-    item.style.animationDelay = `${0.1 + i * 0.08}s`;
-    item.innerHTML = `
+	const grid = document.getElementById("recsGrid");
+	grid.innerHTML = "";
+
+	const items = [];
+
+	// Músicas
+	(data.musicas || []).slice(0, 2).forEach((m) => {
+		items.push({
+			icon: "headphones",
+			label: m.titulo,
+			desc: m.artista,
+			btn: "OUVIR",
+			url: m.url || "https://open.spotify.com",
+			color: T.amber,
+			dim: T.amberDim,
+		});
+	});
+
+	// Livros
+	(data.livros || []).slice(0, 1).forEach((l) => {
+		items.push({
+			icon: "bookopen",
+			label: l.titulo,
+			desc: `${l.autor} — ${l.descricao}`,
+			btn: "VER",
+			url: `https://www.google.com/search?q=${encodeURIComponent(l.titulo + " " + l.autor)}`,
+			color: T.lilac,
+			dim: T.lilacDim,
+		});
+	});
+
+	// Links
+	(data.links || []).slice(0, 1).forEach((lk) => {
+		items.push({
+			icon: "heart",
+			label: lk.titulo,
+			desc: lk.descricao,
+			btn: "ACESSAR",
+			url: lk.url,
+			color: T.mint,
+			dim: T.mintDim,
+		});
+	});
+
+	// Se urgente, força CVV no topo
+	if (data.nivel_urgencia === 3) {
+		items.unshift({
+			icon: "phone",
+			label: "CVV — Ligue 188",
+			desc: "Apoio gratuito e sigiloso 24 horas.",
+			btn: "LIGAR",
+			url: "https://www.cvv.org.br/",
+			color: T.amber,
+			dim: T.amberDim,
+		});
+	}
+
+	items.forEach((rec, i) => {
+		const item = document.createElement("div");
+		item.className = "rec-item";
+		item.style.animationDelay = `${0.1 + i * 0.08}s`;
+		item.innerHTML = `
       <div class="rec-glow" style="background:${rec.dim}"></div>
       <div class="rec-icon" style="background:${rec.color}15;border:1px solid ${rec.color}33">
         <span style="color:${rec.color}">${ICONS[rec.icon]}</span>
@@ -584,19 +587,19 @@ function renderRecs(data) {
          onmouseout="this.style.background='${rec.color}18'"
       >${rec.btn} <span>${ICONS.chevron}</span></a>
     `;
-    grid.appendChild(item);
-  });
+		grid.appendChild(item);
+	});
 }
 
 // Fallback local (mantém o comportamento original se a API falhar)
 function renderRecsLocal(key) {
-  const grid = document.getElementById('recsGrid');
-  grid.innerHTML = '';
-  (RECS[key] || RECS.geral).forEach((rec, i) => {
-    const item = document.createElement('div');
-    item.className = 'rec-item';
-    item.style.animationDelay = `${0.1 + i * 0.08}s`;
-    item.innerHTML = `
+	const grid = document.getElementById("recsGrid");
+	grid.innerHTML = "";
+	(RECS[key] || RECS.geral).forEach((rec, i) => {
+		const item = document.createElement("div");
+		item.className = "rec-item";
+		item.style.animationDelay = `${0.1 + i * 0.08}s`;
+		item.innerHTML = `
       <div class="rec-glow" style="background:${rec.dim}"></div>
       <div class="rec-icon" style="background:${rec.color}15;border:1px solid ${rec.color}33">
         <span style="color:${rec.color}">${ICONS[rec.icon]}</span>
@@ -610,24 +613,24 @@ function renderRecsLocal(key) {
          onmouseout="this.style.background='${rec.color}18'"
       >${rec.btn} <span>${ICONS.chevron}</span></a>
     `;
-    grid.appendChild(item);
-  });
+		grid.appendChild(item);
+	});
 }
 
 function handleReset() {
-  document.getElementById('resultGrid').classList.add('hidden');
-  document.getElementById('responseText').textContent = '';
-  document.getElementById('cursor').style.display = 'none';
-  document.getElementById('respActions').classList.add('hidden');
-  const inp = document.getElementById('letterInput');
-  inp.value = '';
-  letterValue = '';
-  document.getElementById('charCount').textContent = '0/1000 caracteres';
-  document.getElementById('dots').innerHTML = '';
-  document.getElementById('sendBtn').disabled = true;
-  document.getElementById('sendBtn').innerHTML =
-    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> ENVIAR CARTA`;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+	document.getElementById("resultGrid").classList.add("hidden");
+	document.getElementById("responseText").textContent = "";
+	document.getElementById("cursor").style.display = "none";
+	document.getElementById("respActions").classList.add("hidden");
+	const inp = document.getElementById("letterInput");
+	inp.value = "";
+	letterValue = "";
+	document.getElementById("charCount").textContent = "0/1000 caracteres";
+	document.getElementById("dots").innerHTML = "";
+	document.getElementById("sendBtn").disabled = true;
+	document.getElementById("sendBtn").innerHTML =
+		`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> ENVIAR CARTA`;
+	window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function sleep(ms) {
